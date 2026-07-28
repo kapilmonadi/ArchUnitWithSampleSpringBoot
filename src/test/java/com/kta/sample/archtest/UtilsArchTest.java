@@ -12,7 +12,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.methods;
 public class UtilsArchTest {
     @ArchTest
     ArchRule arch_rule_only_static_methods_in_util_classes = methods().that().
-            areDeclaredInClassesThat().resideInAPackage("..utils..").
+            areDeclaredInClassesThat().resideInAPackage("..util..").
             should().beStatic();
 
 }

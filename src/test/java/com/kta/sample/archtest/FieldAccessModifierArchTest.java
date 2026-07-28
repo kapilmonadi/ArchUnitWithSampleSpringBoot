@@ -10,6 +10,8 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.fields;
 @AnalyzeClasses(packages = "com.kta.sample", importOptions = ImportOption.DoNotIncludeTests.class)
 public class FieldAccessModifierArchTest {
     private static final ArchRule instance_variables_should_be_marked_private = fields()
+            .that().areNotStatic()
+            .or().areNotFinal()
             .should().bePrivate()
             .because("Instance variables should be marked as private and be made available via public accessor methods. ");
 }
