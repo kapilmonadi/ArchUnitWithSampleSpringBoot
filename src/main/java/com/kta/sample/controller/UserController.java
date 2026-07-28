@@ -49,4 +49,9 @@ public class UserController {
         user.setLastName("Oracle");
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("/say-hello")
+    public String sayHello(){
+        return "Hello there !";
+    }
 }

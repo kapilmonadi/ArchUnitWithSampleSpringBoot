@@ -15,6 +15,6 @@ public class DTOShouldBeRecordArchTest {
     public static final ArchRule dto_classes_must_be_records = classes()
             .that().resideInAPackage("..dto..")
             .should().beRecords()
-            .because("Since Records offer immutability");
+            .because( "Records offer immutability");
 
 }

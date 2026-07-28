@@ -1,4 +1,4 @@
-package com.kta.sample.utils;
+package com.kta.sample.util;
 
 import java.time.LocalDate;
 

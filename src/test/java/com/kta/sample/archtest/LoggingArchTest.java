@@ -16,7 +16,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 public class LoggingArchTest {
 
     @ArchTest
-    public static final ArchRule no_classes_should_log_onto_std_console = GeneralCodingRules.NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS;
+    public static final ArchRule no_classes_should_log_onto_standard_console = GeneralCodingRules.NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS;
 
     @ArchTest
     public static final ArchRule classes_must_use_slf4j_logging = noClasses()
