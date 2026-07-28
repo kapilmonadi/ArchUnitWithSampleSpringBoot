@@ -26,7 +26,7 @@ public class SerialVersionUIDCheckArchTest {
 
         @Override
         public void check(JavaClass javaClass, ConditionEvents conditionEvents) {
-            String message = String.format("Class %s implements Serializable but lacks a valid serialVersionUID", javaClass.getName());
+            String message = String.format("Class %s is implementing Serializable but is missing serialVersionUID", javaClass.getName());
             try {
                 JavaField field = javaClass.getField("serialVersionUID");
                 boolean isSerialVersionUIDFieldPresent = field.getModifiers().contains(JavaModifier.STATIC)
