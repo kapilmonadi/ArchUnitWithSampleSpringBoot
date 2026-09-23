@@ -32,4 +32,7 @@ public class LoggingArchTest {
     .andShould().beFinal()
     .andShould().haveName("log")
     .as("Logger fields must be declared as 'private static final Logger log;'");
+
+
+
 }

@@ -12,7 +12,23 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 public class NamingConventionArchTest {
 
     @ArchTest
-    private static final ArchRule arch_rule_naming_convention = classes().that().
-            resideInAPackage("..constants..").should().
-            haveSimpleNameEndingWith("Constants");
+    private static final ArchRule arch_rule_naming_convention_constants = classes()
+            .that().resideInAPackage("..constants..")
+            .should().haveSimpleNameEndingWith("Constants");
+
+    @ArchTest
+    private static final ArchRule arch_rule_naming_convention_listener = classes()
+            .that().resideInAPackage("..listener..")
+            .should().haveSimpleNameEndingWith("Listener");
+
+    @ArchTest
+    private static final ArchRule arch_rule_naming_convention_service = classes()
+            .that().resideInAPackage("..service")
+            .should().beInterfaces()
+            .andShould().haveSimpleNameEndingWith("Service");
+
+    @ArchTest
+    private static final ArchRule arch_rule_naming_convention_service_impl = classes()
+            .that().resideInAPackage("..service.impl")
+            .should().haveSimpleNameEndingWith("ServiceImpl");
 }

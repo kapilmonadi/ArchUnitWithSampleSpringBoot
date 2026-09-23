@@ -14,6 +14,7 @@ import com.tngtech.archunit.lang.SimpleConditionEvent;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.fields;
+import static com.tngtech.archunit.library.freeze.FreezingArchRule.freeze;
 
 //@AnalyzeClasses(packages = "${package.name}", importOptions = ImportOption.DoNotIncludeTests.class)
 @AnalyzeClasses(packages = "com.kta.sample", importOptions = ImportOption.DoNotIncludeTests.class)
@@ -29,13 +30,14 @@ public class ConstantsArchTest {
             .andShould().beFinal()
             .because("Constant classes must only contain public static final fields.");
 
-    // the classes that are supposed to be Constants should not be private
+    // the classes that are supposed to be Constants should be public
     @ArchTest
-    public static final ArchRule constants_classes_should_not_be_private = classes()
-            .that().haveSimpleNameEndingWith("Constants")
-            .should().notBePrivate();
+    public static final ArchRule constants_classes_should_be_public = freeze(classes()
+            .that().resideInAPackage("..constants..")
+            .should().bePublic()
+            .because("Constant classes must have public class access modifier"));
 
-    // constants classes should have a private constructor so they can only static invocations
+    // constants classes should have a private constructor so they can have only static invocations
     @ArchTest
     public static final ArchRule constants_classes_must_have_private_constructor = classes()
             .that().haveSimpleNameEndingWith("Constants")

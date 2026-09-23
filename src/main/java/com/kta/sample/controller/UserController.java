@@ -6,6 +6,7 @@ import com.kta.sample.exception.UserNotFoundException;
 import com.kta.sample.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,19 +20,22 @@ import java.util.Optional;
 public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
-    private final UserService userService;
 
+    /*@Autowired
+    private UserService userService;*/
+
+    private final UserService userService;
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/get/user/{userIdStr}")
-    public ResponseEntity<UserRecord> getUserRecord(@PathVariable Optional<String> userIdStr){
+    @GetMapping("/get/{userIdStr}")
+    public ResponseEntity<UserRecord> getUserRecord(@PathVariable Optional<String> userIdStr) {
 
         log.info("Received a request with userId : {}", userIdStr);
         // hardcoded for now, replace with Service class invocation
         if(userIdStr.isPresent()){
-            System.out.println("User id is " + userIdStr.get());
+            //System.out.println("User id is " + userIdStr.get());
             UserRecord userRecord = userService.getUser(Long.parseLong(userIdStr.get()));
             return ResponseEntity.ok(userRecord);
         }
@@ -41,12 +45,12 @@ public class UserController {
     }
 
     // Inappropriate implementation, controller should not refer to an entity class, should be caught by ArchUnit
-    @GetMapping("/get/user/invalid")
-    public ResponseEntity<User> getUserRecord(){
+    @GetMapping("/get/invalid")
+    public ResponseEntity<User> getUser() {
         User user = new User();
         user.setId(1L);
         user.setFirsName("Neo");
-        user.setLastName("Oracle");
+        user.setLastName("O");
         return ResponseEntity.ok(user);
     }
 

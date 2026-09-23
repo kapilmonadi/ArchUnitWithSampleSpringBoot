@@ -15,7 +15,7 @@ import static com.tngtech.archunit.library.GeneralCodingRules.NO_CLASSES_SHOULD_
 public class ExceptionsArchTest {
 
     @ArchTest
-    private static final ArchRule no_generic_exceptions_should_be_thrown = NO_CLASSES_SHOULD_THROW_GENERIC_EXCEPTIONS
+    public static final ArchRule no_generic_exceptions_should_be_thrown = NO_CLASSES_SHOULD_THROW_GENERIC_EXCEPTIONS
             .because("It is not a good practice. Always define and throw custom exceptions within the application !");
 
     @ArchTest

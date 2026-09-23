@@ -1,10 +1,14 @@
 package com.kta.sample.service;
 
+import com.kta.sample.dto.UserDTO;
 import com.kta.sample.dto.UserRecord;
 import com.kta.sample.exception.UserFetchException;
 import org.springframework.resilience.annotation.Retryable;
 
 public interface UserService {
+
+    @Deprecated
+    UserDTO getUserDetails(Long userId);
 
     @Retryable(includes = {UserFetchException.class},// Exceptions to trigger a retry
             maxRetries = 3,                   // 3 extra retries after the first failure
@@ -14,6 +18,5 @@ public interface UserService {
     )// Cap on max wait time
     UserRecord getUser(Long userId);
 
-    //@Recover
     String getUserFailureMessage(UserFetchException userFetchException);
 }

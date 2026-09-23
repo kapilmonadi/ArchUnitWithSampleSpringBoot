@@ -9,9 +9,10 @@ import java.io.Serializable;
 public class Employee implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 5050L;
+    private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String firstName;
-    private String lastName;
+    public final Long id;
+    private final String firstName;
+    private final String lastName;
+    private String email;
 }

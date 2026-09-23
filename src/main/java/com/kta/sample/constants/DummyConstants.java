@@ -1,4 +1,4 @@
 package com.kta.sample.constants;
 
-class Sample {
+class DummyConstants {
 }
