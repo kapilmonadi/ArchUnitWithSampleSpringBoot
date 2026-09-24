@@ -11,12 +11,25 @@ public class DeSerializationSample {
 
         try (ObjectInputStream in =
                      new ObjectInputStream(
-                             new FileInputStream("employee.ser.file"))) {
+                             new FileInputStream("employee1.ser.file"))) {
 
-            Employee employee = (Employee) in.readObject();
+            Employee employee1 = (Employee) in.readObject();
 
             System.out.println("Object deserialized successfully!");
-            System.out.println("Deserialized object: " + employee);
+            System.out.println("Deserialized object: " + employee1);
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try (ObjectInputStream in =
+                     new ObjectInputStream(
+                             new FileInputStream("employee2.ser.file"))) {
+
+            Employee employee2 = (Employee) in.readObject();
+
+            System.out.println("Object deserialized successfully!");
+            System.out.println("Deserialized object: " + employee2);
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
